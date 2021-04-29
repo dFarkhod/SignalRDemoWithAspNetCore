@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SignalRService } from './services/signalr.service';
 import { ChartModel } from './interfaces/chart.model';
 import { BaseChartDirective } from 'ng2-charts';
-import { HttpClient } from '@angular/common/http';
+import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -16,33 +17,22 @@ export class AppComponent implements OnInit {
   };
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
-  public chartType: string = 'line';
-  public chartLegend: boolean = true;
-  public colors: any[] = [{ backgroundColor: 'blue', borderColor: "blue" } , { backgroundColor: 'red', borderColor: 'red' }]
+  chartType: string = 'line';
+  chartLegend: boolean = true;
+  colors: any[] = [{ backgroundColor: 'blue', borderColor: "blue" } , { backgroundColor: 'red', borderColor: 'red' }];
+  lineChartData: ChartModel[] = [];
+  lineChartLabels: string[] = [];
 
-  public lineChartData: ChartModel[] = [];
-
-  public lineChartLabels: string[] = [];
-
-  constructor(public signalRService: SignalRService, private http: HttpClient) { }
+  constructor(private signalRService: SignalRService) { }
 
   ngOnInit() {
     this.lineChartData = [{ data: [0], label: "MYR", fill: false },  { data: [0], label: "SGD", fill: false }];
-    this.lineChartLabels = ["START"];
-    this.subscribeToRatesService();
-    this.signalRService.startConnection();
-    this.signalRService.addTransferChartDataListener();
-    this.startHttpRequest();
+    this.lineChartLabels = [formatDate(new Date(), 'yyyy-MM-dd', 'en')];
+    this.subscribeToRatesData();
+    this.signalRService.init();
   }
 
-  private startHttpRequest = () => {
-    this.http.get('https://localhost:5001/api/rates')
-      .subscribe(res => {
-        console.log(res);
-      })
-  }
-
-  private subscribeToRatesService() {
+  private subscribeToRatesData() {
     this.signalRService.chartsSubject$.subscribe(currencies => {
       currencies.forEach( currency => {
         this.lineChartData.filter(i => i.label == currency.code)[0].data.push(currency.rate);

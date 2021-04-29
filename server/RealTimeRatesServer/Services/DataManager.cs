@@ -15,7 +15,7 @@ namespace RealTimeRatesServer.DataStorage
             Currency curr = new Currency();
             curr.Rate = randomNum / 1000;
             curr.Code = "MYR";
-            curr.Time = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
+            curr.Time = DateTime.Now.ToString("HH:mm:ss");
             randomData.Add(curr);
 
             float randomNum2 = r.Next(2900, 3400);
