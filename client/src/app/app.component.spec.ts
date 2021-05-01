@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'RealTImeCharts-Client'`, () => {
+  it(`should have as title 'RealTimeRatesClient'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('RealTImeCharts-Client');
+    expect(app.title).toEqual('RealTimeRatesClient');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to RealTImeCharts-Client!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to RealTimeRatesClient!');
   });
 });

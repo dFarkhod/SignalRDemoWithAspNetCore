@@ -17,7 +17,7 @@ namespace RealTimeRatesServer.Services
         {
             _configuration = configuration;
             _logger = logger;
-            var interval = _configuration.GetValue<int>("AppSettings:TimerInterval", 5000);
+            var interval = _configuration.GetValue<int>("AppSettings:TimerInterval", 3000);
             _timer = new Timer(interval);
             _timer.Elapsed += Elapsed;
             _logger.LogDebug("TimerManager initialized.");
