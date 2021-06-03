@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Real-Time-Rates-Client": {
+    "real-time-rates-client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/RealTimeRatesClient",
+            "outputPath": "dist/real-time-rates-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RealTImeCharts-Client:build"
+            "browserTarget": "real-time-rates-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RealTImeCharts-Client:build:production"
+              "browserTarget": "real-time-rates-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RealTImeCharts-Client:build"
+            "browserTarget": "real-time-rates-client:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "RealTImeCharts-Client-e2e": {
+    "real-time-rates-client-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "RealTImeCharts-Client:serve"
+            "devServerTarget": "real-time-rates-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "RealTImeCharts-Client:serve:production"
+              "devServerTarget": "real-time-rates-client:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "RealTImeCharts-Client"
+  "defaultProject": "real-time-rates-client"
 }
