@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     scaleShowVerticalLines: true,
     responsive: true
   };
-  @ViewChild(BaseChartDirective, { static: false }) chart: BaseChartDirective;
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   chartType: string = 'line';
   chartLegend: boolean = true;
